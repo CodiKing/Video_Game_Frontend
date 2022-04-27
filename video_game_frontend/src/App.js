@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< Updated upstream
-import axios from 'axios';
-import { Chart } from "react-google-charts";
-=======
-<<<<<<< HEAD
-import Axios from './utils/Axios';
 import Dashboard from './components/NavBar/DashBoard';
-=======
 import axios from 'axios';
 import { Chart } from "react-google-charts";
->>>>>>> 9b046b6e1a0041545ba6d3b045ac7df4d1d96030
->>>>>>> Stashed changes
+import HomePage from './HomePage';
+
+
 function App() {
 const [platforms, setPlatforms] = useState([]);
 const [globalSales, setGlobalSales] = useState([]);
 
   useEffect(() => {
-    // console.log(process.env.REACT_APP_AXIOS)
     getAllVideoGames()
+    getPlatformGlobalSales()
   }, []);
 
   const getAllVideoGames = async () => {
@@ -30,6 +24,23 @@ const [globalSales, setGlobalSales] = useState([]);
       console.log(e);
     }
   };
+  const getPlatformGlobalSales = async () => {
+    try{
+      const res = await axios.get('https://localhost:7260/api/Games/byPlatform-globalsales')
+      let obj = res.data
+      for(let i = 0; i < data.length; i++){
+      if(obj[data[i].platform]){
+      obj[data[i].platform] += data[i].globalSales
+      }else{
+      obj[data[i].platform] = data[i].globalSales
+        }
+      }
+      console.log(obj)
+
+    }catch (e){
+      console.log(e)
+    }
+  }
   // Data and options for bar chart to include global game sales per console
   const data = [
     []
