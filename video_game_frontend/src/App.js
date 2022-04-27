@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< Updated upstream
 import axios from 'axios';
 import { Chart } from "react-google-charts";
+=======
+<<<<<<< HEAD
+import Axios from './utils/Axios';
+import Dashboard from './components/NavBar/DashBoard';
+=======
+import axios from 'axios';
+import { Chart } from "react-google-charts";
+>>>>>>> 9b046b6e1a0041545ba6d3b045ac7df4d1d96030
+>>>>>>> Stashed changes
 function App() {
 const [platforms, setPlatforms] = useState([]);
 const [globalSales, setGlobalSales] = useState([]);
